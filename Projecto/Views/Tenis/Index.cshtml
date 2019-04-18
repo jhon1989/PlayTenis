@@ -1,0 +1,58 @@
+﻿@model Projecto.Models.TenisVieModel
+
+@{
+    ViewBag.Title = "Index dd";
+}
+
+<main>
+    <h2 class="text-center text-uppercase">juego de tenis de dos personas</h2>
+
+    <br />
+
+    <form action="/Tenis/Point" method="post">
+        <div class="container col-md-4 col-md-offset-4">
+
+            <div class="panel panel-default">
+                <div class="panel-heading text-center">
+                    <label class="text-center text-capitalize">Player 1 VS Player 2</label>
+                </div>
+                <div class="panel-body">
+                    <br />
+                    <br />
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <label class="text-capitalize">Points</label>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="col-md-12 text-center">
+                            <strong style="font-size: 200%">
+                                @Html.DisplayFor(model => model.resultPoint)
+                                @Html.HiddenFor(model => model.resultPoint, new { id = "resultPoint", Value = @Model.resultPoint })
+                                @Html.HiddenFor(model => model.consecutivePointPlayer2, new { Value = @Model.consecutivePointPlayer2 })
+                                @Html.HiddenFor(model => model.consecutivePointPlayer1, new { Value = @Model.consecutivePointPlayer1 })
+                            </strong>
+                        </div>
+
+                    </div>
+                    <br />
+                    <hr />
+                    <div class="text-center col-md-offset-1">
+                        <select name="palyers" id="players" class="form-control text-uppercase">
+                            <option value="1">POINT FOR PLAYER 1</option>
+                            <option value="2">POINT FOR PLAYER 2</option>
+                        </select>
+                    </div>
+                </div>
+
+                <hr />
+                <div class="panel-footer text-center">
+                    <button type="submit" class="btn btn-default text-uppercase">POINT</button>
+                    @Html.ActionLink("RESTART", "Restart", "Tenis", null, new { @class = "btn btn-default text-uppercase" })
+                </div>
+            </div>
+        </div>
+    </form>
+</main>
+
+
